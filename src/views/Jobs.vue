@@ -1,5 +1,5 @@
 <template>
-  <h1>Tela de projetos</h1>
+  <h1>Tela de trajetória</h1>
 </template>
 
 <style>

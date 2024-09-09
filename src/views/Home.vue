@@ -2,5 +2,5 @@
 </script>
 
 <template>
-  <v-btn>Teste de vuetify</v-btn>
+  <h1>Tela inicial</h1>
 </template>
