@@ -16,7 +16,8 @@ const theme_light = {
         secondary_blue: '#0056b3',
         links: '#007BFF',
         neutro: '#CCCCCC',
-        alert: '#DC3545'
+        alert: '#DC3545',
+        pink: '#db4a39',
 
     }
 }
@@ -30,7 +31,8 @@ const theme_dark = {
         secondary_blue: '#0056b3',
         links: '#90CAF9',
         neutro: '#333333',
-        alert: '#CF6679'
+        alert: '#CF6679',
+        pink: '#db4a39',
 
     }
 }
