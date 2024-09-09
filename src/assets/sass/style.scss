@@ -9,3 +9,19 @@ body {
 // .v-list .v-list-item:hover{
 //     background-color: #0056b3 !important;
 // }
+
+// v-switch
+.v-input__prepend,
+.v-input__append {
+    margin: 0 !important;
+    min-width: 24px !important;
+}
+
+.v-switch.v-input {
+    display: flex !important;
+    gap: 4px !important;
+}
+
+.v-selection-control__input:hover::before {
+    opacity: 0 !important;
+  }

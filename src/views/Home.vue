@@ -10,7 +10,7 @@ import Container from '@/components/Container.vue';
         <v-img src="https://raw.githubusercontent.com/Elian-beep/assets_icons/main/profile.jpg" cover></v-img>
         <v-card-title class="social_links">
           <a href="mailto:elian.19batista@gmail.com">
-            <v-chip link color="pink" label prepend-icon="mdi-label">E-mail</v-chip>
+            <v-chip link color="pink" label prepend-icon="mdi-email">E-mail</v-chip>
           </a>
           <a href="https://www.linkedin.com/in/elian-batista/">
             <v-chip link color="secondary_blue" label prepend-icon="mdi-linkedin">Linkedin</v-chip>
@@ -31,13 +31,10 @@ import Container from '@/components/Container.vue';
 
 
         <v-card-text>
-          Desenvolvedor de software web com 2 anos de experiência, formado em Ciência da Computação, com estudos e
-          práticas voltadaos a
-          utilizando de TypeScript e Java.
-          Focado em construir soluções eficientes e escaláveis para web, com
-          habilidades em front-end e back-end, sempre buscando aprofundar seus conhecimentos nas melhores práticas e
-          novas
-          tecnologias do mercado.
+          Sou desenvolvedor de software web com 2 anos de experiência, formado em Ciência da Computação e com estudos e
+          práticas voltados à utilização de TypeScript e Java. Tenho foco em construir soluções eficientes e escaláveis
+          para web, com habilidades tanto no front-end quanto no back-end, e estou sempre buscando aprofundar meus
+          conhecimentos nas melhores práticas e nas novas tecnologias do mercado.
         </v-card-text>
       </div>
 
@@ -60,8 +57,9 @@ import Container from '@/components/Container.vue';
   flex-direction: column
 }
 
-.social_links{
+.social_links {
   display: flex;
+  justify-content: center;
   gap: 12px;
 }
 

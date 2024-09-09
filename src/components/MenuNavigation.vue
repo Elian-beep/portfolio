@@ -1,13 +1,23 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import image_avatar from '@/assets/images/avatar.svg';
+import { useApplicationStore } from '@/stores/application.store';
 
+const applicationStore = useApplicationStore();
 
 const data = ref({
 	drawer: true,
 	rail: false,
 	isDesktop: window.innerWidth >= 640,
+	isDark: applicationStore.getIsDark,
 });
+
+const switchLabel = ref(data.value.isDark ? 'Claro' : 'Escuro');
+
+const toggleDarkMode = () => {
+	data.value.isDark = !data.value.isDark;
+	applicationStore.setIsDark(data.value.isDark);
+}
 </script>
 
 <template>
@@ -16,9 +26,7 @@ const data = ref({
 			<v-navigation-drawer v-model="data.drawer" :rail="data.rail" permanent @click="data.rail = false">
 
 				<v-list>
-					<v-list-item
-						:prepend-avatar="image_avatar"
-						subtitle="Dev web" title="Elian Batista">
+					<v-list-item :prepend-avatar="image_avatar" subtitle="Dev web" title="Elian Batista">
 						<template v-if="!data.isDesktop" v-slot:append>
 							<v-btn icon="mdi-chevron-left" variant="plain" @click.stop="data.rail = !data.rail"></v-btn>
 						</template>
@@ -42,6 +50,26 @@ const data = ref({
 						value="jobs"></v-list-item>
 				</v-list>
 
+				<template v-slot:append>
+					<div class="bottom_nav">
+						<div v-if="data.rail">
+							<v-btn variant="text" class="btn_theme" icon @click="toggleDarkMode" @click.stop="data.rail = data.rail = data.isDesktop ? false : true">
+								<v-icon color="primary" v-if="data.isDark">mdi-weather-night</v-icon>
+								<v-icon color="primary_blue" v-else>mdi-white-balance-sunny</v-icon>
+							</v-btn>
+						</div>
+
+						<v-switch v-if="!data.rail" @change="toggleDarkMode" :ripple="false" hide-details class="hide-toggle">
+							<template #prepend>
+								<v-icon color="primary" v-if="data.isDark">mdi-weather-night</v-icon>
+							</template>
+							<template #append>
+								<v-icon color="primary_blue" v-if="!data.isDark">mdi-white-balance-sunny</v-icon>
+							</template>
+						</v-switch>
+					</div>
+				</template>
+
 			</v-navigation-drawer>
 			<v-main class="custom_main bg-background">
 				<slot></slot>
@@ -54,5 +82,20 @@ const data = ref({
 .custom_main {
 	height: 100vh;
 	overflow-y: auto;
+}
+
+.bottom_nav {
+	padding: 8px;
+	margin: 0 auto 0 0;
+	max-width: 86px;
+}
+
+.hide-toggle .v-input__control {
+  display: none !important;
+}
+
+.btn_theme{
+	max-width: 56px;
+	max-height: 56px;
 }
 </style>

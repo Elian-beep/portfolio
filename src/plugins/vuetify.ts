@@ -6,7 +6,7 @@ import { createVuetify } from "vuetify";
 import { pt } from 'vuetify/locale';
 import { VListItem } from 'vuetify/components';
 
-const theme_light = {
+const t_light = {
     dark: false,
     colors: {
         background: '#F5F5F5',
@@ -21,7 +21,7 @@ const theme_light = {
 
     }
 }
-const theme_dark = {
+const t_dark = {
     dark: true,
     colors: {
         background: '#121212',
@@ -52,10 +52,10 @@ export default createVuetify({
         },
     },
     theme: {
-        defaultTheme: 'theme_light',
+        defaultTheme: 't_light',
         themes: {
-            theme_light,
-            theme_dark
+            t_light,
+            t_dark
         }
     }
 });
