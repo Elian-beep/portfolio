@@ -2,6 +2,7 @@
 import { RouterView } from 'vue-router'
 import MenuNavigation from '@/components/MenuNavigation.vue';
 import { useApplicationStore } from './stores/application.store';
+import Footer from '@/components/Footer.vue';
 
 const applicationStore = useApplicationStore();
 </script>
@@ -11,5 +12,6 @@ const applicationStore = useApplicationStore();
     <MenuNavigation>
       <RouterView />
     </MenuNavigation>
+    
   </v-app>
 </template>

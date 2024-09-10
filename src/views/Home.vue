@@ -13,7 +13,7 @@ import Container from '@/components/Container.vue';
             <v-chip link color="pink" label prepend-icon="mdi-email">E-mail</v-chip>
           </a>
           <a href="https://www.linkedin.com/in/elian-batista/">
-            <v-chip link color="secondary_blue" label prepend-icon="mdi-linkedin">Linkedin</v-chip>
+            <v-chip link color="primary_blue" label prepend-icon="mdi-linkedin">Linkedin</v-chip>
           </a>
           <a href="https://github.com/Elian-beep">
             <v-chip link color="secondary" label prepend-icon="mdi-github">Github</v-chip>
@@ -44,9 +44,9 @@ import Container from '@/components/Container.vue';
 
 <style scoped>
 .container {
-  height: 100vh;
   display: flex;
   align-items: center;
+  height: 100%;
 }
 
 .content {

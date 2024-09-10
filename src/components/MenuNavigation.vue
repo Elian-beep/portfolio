@@ -2,13 +2,14 @@
 import { ref } from 'vue';
 import image_avatar from '@/assets/images/avatar.svg';
 import { useApplicationStore } from '@/stores/application.store';
+import Footer from '@/components/Footer.vue';
 
 const applicationStore = useApplicationStore();
 
 const data = ref({
 	drawer: true,
-	rail: false,
 	isDesktop: window.innerWidth >= 640,
+	rail:  false,
 	isDark: applicationStore.getIsDark,
 });
 
@@ -23,7 +24,7 @@ const toggleDarkMode = () => {
 <template>
 	<v-card>
 		<v-layout>
-			<v-navigation-drawer v-model="data.drawer" :rail="data.rail" permanent @click="data.rail = false">
+			<v-navigation-drawer class="custom_navigation" v-model="data.drawer" :rail="data.rail" permanent @click="data.rail = false">
 
 				<v-list>
 					<v-list-item :prepend-avatar="image_avatar" subtitle="Dev web" title="Elian Batista">
@@ -53,7 +54,7 @@ const toggleDarkMode = () => {
 				<template v-slot:append>
 					<div class="bottom_nav">
 						<div v-if="data.rail">
-							<v-btn variant="text" class="btn_theme" icon @click="toggleDarkMode" @click.stop="data.rail = data.rail = data.isDesktop ? false : true">
+							<v-btn variant="plain" class="btn_theme" icon @click="toggleDarkMode" @click.stop="data.rail = data.rail = data.isDesktop ? false : true">
 								<v-icon color="primary" v-if="data.isDark">mdi-weather-night</v-icon>
 								<v-icon color="primary_blue" v-else>mdi-white-balance-sunny</v-icon>
 							</v-btn>
@@ -73,14 +74,19 @@ const toggleDarkMode = () => {
 			</v-navigation-drawer>
 			<v-main class="custom_main bg-background">
 				<slot></slot>
+				<Footer />
 			</v-main>
 		</v-layout>
 	</v-card>
 </template>
 
 <style scoped>
+.custom_navigation{
+	/* max-height: 100vh; */
+}
 .custom_main {
-	height: 100vh;
+	height: calc(100vh - 64px);
+	/* max-height: 100vh; */
 	overflow-y: auto;
 }
 
@@ -97,5 +103,12 @@ const toggleDarkMode = () => {
 .btn_theme{
 	max-width: 56px;
 	max-height: 56px;
+}
+
+@media screen and (min-width: 940px){
+	.custom_main {
+	height: calc(100vh - 94px);
+}
+
 }
 </style>
