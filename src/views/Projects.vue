@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, watch } from 'vue';
+import { ref } from 'vue';
 import { projects } from '@/mocks/projects';
 
 const projects_list = ref(projects);
@@ -27,13 +27,26 @@ const getIconStack = (title: string) => {
     <div class="content">
 
       <v-card v-for="project in projects_list" :key="project.id" class="mx-auto custom_card">
-        <v-img height="200px" src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" cover></v-img>
+        <v-carousel hide-delimiters height="200" width="322">
+
+          <template v-slot:prev="{ props }">
+            <v-btn color="secondary" icon="mdi-menu-left" variant="plain" @click="props.onClick"></v-btn>
+          </template>
+          <template v-slot:next="{ props }">
+            <v-btn color="secondary" icon="mdi-menu-right" variant="plain" @click="props.onClick"></v-btn>
+          </template>
+
+          <v-carousel-item v-for="(image, index) in project.images" :key="index" height="200" width="322">
+            <v-img :src="image" class="carousel-image" />
+          </v-carousel-item>
+        </v-carousel>
 
         <v-card-title>{{ project.title }}</v-card-title>
 
         <div class="stacks">
           <div v-for="(stack, index) in project.stacks" :key="index">
-            <v-chip :color="getIconStack(stack)?.color" :prepend-icon="getIconStack(stack)?.value">{{ stack !== 'C#' ? stack : '' }}</v-chip>
+            <v-chip :color="getIconStack(stack)?.color" :prepend-icon="getIconStack(stack)?.value">{{ stack !== 'C#' ?
+              stack : '' }}</v-chip>
           </div v-for="(stack, index) in project.stacks" :key="index">
         </div>
 
@@ -78,7 +91,7 @@ const getIconStack = (title: string) => {
   margin: 0 auto;
 }
 
-.custom_card{
+.custom_card {
   min-width: 322px;
   max-width: 322px;
 }
@@ -108,8 +121,8 @@ const getIconStack = (title: string) => {
   margin: 0;
 }
 
-@media screen and (min-width: 940px){
-  .title{
+@media screen and (min-width: 940px) {
+  .title {
     text-align: center;
   }
 
@@ -117,17 +130,22 @@ const getIconStack = (title: string) => {
     flex-direction: row;
     flex-wrap: wrap;
     align-items: baseline;
+    /* align-items: stretch; */
     width: 656px;
   }
 
-  .custom_card{
+  .custom_card {
     width: 322px;
     max-width: 322px;
   }
+
+  .carousel-image {
+    height: 100%;
+  }
 }
 
-@media screen and (min-width: 1285px){
-  .content{
+@media screen and (min-width: 1285px) {
+  .content {
     width: 990px;
     max-width: 990px;
   }

@@ -25,3 +25,9 @@ body {
 .v-selection-control__input:hover::before {
     opacity: 0 !important;
   }
+
+  // v-carousel
+  .v-window__controls{
+    margin: 0 !important;
+    padding: 0 !important;
+  }
