@@ -1,6 +1,135 @@
+<script lang="ts" setup>
+import { ref, watch } from 'vue';
+import { projects } from '@/mocks/projects';
+
+const projects_list = ref(projects);
+
+const icons_stacks = [
+  { title: 'Typescript', value: 'mdi-language-typescript', color: 'primary_blue' },
+  { title: 'Vue.js', value: 'mdi-vuejs', color: 'green' },
+  { title: 'React.js', value: 'mdi-react', color: '' },
+  { title: 'Node.js', value: 'mdi-nodejs', color: '' },
+  { title: 'Java', value: 'mdi-language-java', color: 'pink' },
+  { title: 'C#', value: 'mdi-language-csharp', color: '' },
+  { title: '.NET', value: 'mdi-dot-net', color: '' },
+]
+
+const getIconStack = (title: string) => {
+  return icons_stacks.find(s => s.title === title);
+}
+
+</script>
+
 <template>
-  <h1>Tela de projetos</h1>
+  <div class="container">
+    <v-card-title class="title">Principais Projetos</v-card-title>
+
+    <div class="content">
+
+      <v-card v-for="project in projects_list" :key="project.id" class="mx-auto custom_card">
+        <v-img height="200px" src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" cover></v-img>
+
+        <v-card-title>{{ project.title }}</v-card-title>
+
+        <div class="stacks">
+          <v-card-subtitle v-for="(stack, index) in project.stacks" :key="index">
+            <v-chip :color="getIconStack(stack)?.color" :prepend-icon="getIconStack(stack)?.value">{{ stack !== 'C#' ?
+              stack : 'CSharp' }}</v-chip>
+          </v-card-subtitle>
+        </div>
+
+        <v-card-actions>
+          <v-btn :href="project.repo" color="primary_blue" text="Repositório"></v-btn>
+
+          <v-spacer></v-spacer>
+
+          <v-btn :icon="project.isShow ? 'mdi-chevron-up' : 'mdi-chevron-down'"
+            @click="project.isShow = !project.isShow"></v-btn>
+
+        </v-card-actions>
+
+        <v-expand-transition>
+          <div v-show="project.isShow">
+            <v-divider></v-divider>
+            <v-card-text class="custom_card_text">
+              <p>{{ project.description }}</p>
+            </v-card-text>
+          </div>
+        </v-expand-transition>
+      </v-card>
+
+    </div>
+  </div>
 </template>
 
-<style>
+<style scoped>
+.container {
+  padding: 12px;
+}
+
+.title {
+  margin: 0 auto;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: 0 auto;
+}
+
+.custom_card{
+  min-width: 322px;
+  max-width: 600px;
+}
+
+.stacks {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  flex-wrap: wrap;
+  padding: 0 12px;
+}
+
+.stacks div {
+  padding: 0;
+}
+
+.custom_card_text {
+  width: 300px;
+}
+
+.custom_card_text p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+}
+
+@media screen and (min-width: 940px){
+  .title{
+    text-align: center;
+  }
+
+  .content {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 656px;
+  }
+
+  .custom_card{
+    width: 322px;
+    max-width: 322px;
+  }
+}
+
+@media screen and (min-width: 1285px){
+  .content{
+    width: 990px;
+    max-width: 990px;
+  }
+}
 </style>

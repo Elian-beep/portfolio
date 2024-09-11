@@ -6,9 +6,17 @@ import { createVuetify } from "vuetify";
 import { pt } from 'vuetify/locale';
 import { VListItem } from 'vuetify/components';
 
+const common_colors =
+{
+    alert: '#DC3545',
+    pink: '#db4a39',
+    green: '#42b883',
+};
+
 const t_light = {
     dark: false,
     colors: {
+        ...common_colors,
         background: '#F5F5F5',
         primary: '#333333',
         primary_blue: '#007BFF',
@@ -16,14 +24,12 @@ const t_light = {
         secondary_blue: '#0056b3',
         links: '#007BFF',
         neutro: '#CCCCCC',
-        alert: '#DC3545',
-        pink: '#db4a39',
-
     }
 }
 const t_dark = {
     dark: true,
     colors: {
+        ...common_colors,
         background: '#121212',
         primary: '#FFFFFF',
         primary_blue: '#007BFF',
@@ -31,9 +37,6 @@ const t_dark = {
         secondary_blue: '#0056b3',
         links: '#90CAF9',
         neutro: '#333333',
-        alert: '#CF6679',
-        pink: '#db4a39',
-
     }
 }
 

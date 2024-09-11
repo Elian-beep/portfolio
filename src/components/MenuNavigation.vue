@@ -24,7 +24,7 @@ const toggleDarkMode = () => {
 <template>
 	<v-card>
 		<v-layout>
-			<v-navigation-drawer class="custom_navigation" v-model="data.drawer" :rail="data.rail" permanent @click="data.rail = false">
+			<v-navigation-drawer v-model="data.drawer" :rail="data.rail" permanent @click="data.rail = false">
 
 				<v-list>
 					<v-list-item :prepend-avatar="image_avatar" subtitle="Dev web" title="Elian Batista">
@@ -37,7 +37,7 @@ const toggleDarkMode = () => {
 				<v-divider></v-divider>
 
 				<v-list density="compact" nav>
-					<v-list-item @click.stop="data.rail = data.isDesktop ? false : true" to="/" active-color="green"
+					<v-list-item @click.stop="data.rail = data.isDesktop ? false : true" to="/"
 						:ripple="false" active-class="bg-primary_blue" prepend-icon="mdi-account-hard-hat"
 						title="Perfil" value="profile">
 					</v-list-item>
@@ -81,12 +81,8 @@ const toggleDarkMode = () => {
 </template>
 
 <style scoped>
-.custom_navigation{
-	/* max-height: 100vh; */
-}
 .custom_main {
 	height: calc(100vh - 64px);
-	/* max-height: 100vh; */
 	overflow-y: auto;
 }
 
