@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import image_avatar from '@/assets/images/avatar.svg';
+import img_avatar from '@/assets/images/avatar.svg';
 import { useApplicationStore } from '@/stores/application.store';
 import Footer from '@/components/Footer.vue';
 
@@ -27,7 +27,7 @@ const toggleDarkMode = () => {
 			<v-navigation-drawer v-model="data.drawer" :rail="data.rail" permanent @click="data.rail = false">
 
 				<v-list>
-					<v-list-item :prepend-avatar="image_avatar" subtitle="Dev web" title="Elian Batista">
+					<v-list-item :prepend-avatar="img_avatar" subtitle="Dev web" title="Elian Batista">
 						<template v-if="!data.isDesktop" v-slot:append>
 							<v-btn icon="mdi-chevron-left" variant="plain" @click.stop="data.rail = !data.rail"></v-btn>
 						</template>

@@ -5,10 +5,10 @@ import { projects } from '@/mocks/projects';
 const projects_list = ref(projects);
 
 const icons_stacks = [
-  { title: 'Typescript', value: 'mdi-language-typescript', color: 'primary_blue' },
+  { title: 'Typescript', value: 'mdi-language-typescript', color: 'blue_ts' },
   { title: 'Vue.js', value: 'mdi-vuejs', color: 'green' },
-  { title: 'React.js', value: 'mdi-react', color: '' },
-  { title: 'Node.js', value: 'mdi-nodejs', color: '' },
+  { title: 'React.js', value: 'mdi-react', color: 'blue_react' },
+  { title: 'Node.js', value: 'mdi-nodejs', color: 'green_node' },
   { title: 'Java', value: 'mdi-language-java', color: 'pink' },
   { title: 'C#', value: 'mdi-language-csharp', color: '' },
   { title: '.NET', value: 'mdi-dot-net', color: '' },
@@ -32,18 +32,17 @@ const getIconStack = (title: string) => {
         <v-card-title>{{ project.title }}</v-card-title>
 
         <div class="stacks">
-          <v-card-subtitle v-for="(stack, index) in project.stacks" :key="index">
-            <v-chip :color="getIconStack(stack)?.color" :prepend-icon="getIconStack(stack)?.value">{{ stack !== 'C#' ?
-              stack : 'CSharp' }}</v-chip>
-          </v-card-subtitle>
+          <div v-for="(stack, index) in project.stacks" :key="index">
+            <v-chip :color="getIconStack(stack)?.color" :prepend-icon="getIconStack(stack)?.value">{{ stack !== 'C#' ? stack : '' }}</v-chip>
+          </div v-for="(stack, index) in project.stacks" :key="index">
         </div>
 
         <v-card-actions>
-          <v-btn :href="project.repo" color="primary_blue" text="Repositório"></v-btn>
+          <v-btn :href="project.repo" text="Repositório"></v-btn>
 
           <v-spacer></v-spacer>
 
-          <v-btn :icon="project.isShow ? 'mdi-chevron-up' : 'mdi-chevron-down'"
+          <v-btn color="secondary_blue" :icon="project.isShow ? 'mdi-chevron-up' : 'mdi-chevron-down'"
             @click="project.isShow = !project.isShow"></v-btn>
 
         </v-card-actions>
@@ -81,7 +80,7 @@ const getIconStack = (title: string) => {
 
 .custom_card{
   min-width: 322px;
-  max-width: 600px;
+  max-width: 322px;
 }
 
 .stacks {
@@ -117,6 +116,7 @@ const getIconStack = (title: string) => {
   .content {
     flex-direction: row;
     flex-wrap: wrap;
+    align-items: baseline;
     width: 656px;
   }
 

@@ -11,6 +11,9 @@ const common_colors =
     alert: '#DC3545',
     pink: '#db4a39',
     green: '#42b883',
+    green_node: '#339933',
+    blue_react: '#61DAFB',
+    blue_ts: '#3178C6',
 };
 
 const t_light = {

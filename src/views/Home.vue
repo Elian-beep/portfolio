@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Container from '@/components/Container.vue';
+import img_profile from '@/assets/images/profile.jpg';
 
 </script>
 
@@ -7,7 +8,7 @@ import Container from '@/components/Container.vue';
   <div class="container">
     <v-card class="content">
       <div>
-        <v-img src="https://raw.githubusercontent.com/Elian-beep/assets_icons/main/profile.jpg" cover></v-img>
+        <v-img :src="img_profile" cover></v-img>
         <v-card-title class="social_links">
           <a href="mailto:elian.19batista@gmail.com">
             <v-chip link color="pink" label prepend-icon="mdi-email">E-mail</v-chip>
