@@ -5,6 +5,8 @@ import { useApplicationStore } from './stores/application.store';
 import Footer from '@/components/Footer.vue';
 
 const applicationStore = useApplicationStore();
+const localIsDark = localStorage.getItem('isDark');
+applicationStore.setIsDark(Boolean(localIsDark));
 </script>
 
 <template>

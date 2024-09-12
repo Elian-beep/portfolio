@@ -13,8 +13,6 @@ const data = ref({
 	isDark: applicationStore.getIsDark,
 });
 
-const switchLabel = ref(data.value.isDark ? 'Claro' : 'Escuro');
-
 const toggleDarkMode = () => {
 	data.value.isDark = !data.value.isDark;
 	applicationStore.setIsDark(data.value.isDark);

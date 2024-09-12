@@ -12,6 +12,7 @@ export const useApplicationStore = defineStore('application', {
     actions: {
         setIsDark(isDark: boolean) {
             this.isDark = isDark;
+            localStorage.setItem('isDark', String(isDark));
         },
     }
 })

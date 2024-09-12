@@ -29,12 +29,13 @@ import { jobs } from '@/mocks/Jobs';
 .custom_timeline {
   width: 322px;
   max-width: 322px;
+  margin: 0 auto;
 }
 
 @media screen and (min-width: 940px) {
   .custom_timeline {
     width: 100%;
-    max-width: 100%;
+    max-width: 794px;
   }
 }
 </style>
