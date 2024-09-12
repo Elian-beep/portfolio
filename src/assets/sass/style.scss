@@ -6,9 +6,11 @@ body {
 }
 
 // v-list-item
-// .v-list .v-list-item:hover{
-//     background-color: #0056b3 !important;
-// }
+.v-list-item:hover>.v-list-item__overlay {
+    // background: green;
+    // color: white;
+    opacity: 0 !important;
+}
 
 // v-switch
 .v-input__prepend,
@@ -24,10 +26,24 @@ body {
 
 .v-selection-control__input:hover::before {
     opacity: 0 !important;
-  }
+}
 
-  // v-carousel
-  .v-window__controls{
+// v-carousel
+.v-window__controls {
     margin: 0 !important;
     padding: 0 !important;
-  }
+}
+
+// v-timeline
+.v-timeline-item__body {
+    padding: 0px !important;
+    padding-left: 8px !important;
+}
+
+.v-timeline-item__opposite {
+    display: none;
+}
+
+.v-timeline-divider {
+    padding: 0 !important;
+}

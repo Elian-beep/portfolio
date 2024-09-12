@@ -2,9 +2,14 @@ import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 import '@mdi/font/css/materialdesignicons.css'
 
-import { createVuetify } from "vuetify";
+import { createVuetify, type IconAliases } from "vuetify";
 import { pt } from 'vuetify/locale';
 import { VListItem } from 'vuetify/components';
+import { aliases as defaultAliases } from 'vuetify/iconsets/mdi';
+
+const aliases: IconAliases = {
+    ...defaultAliases,
+}
 
 const common_colors =
 {

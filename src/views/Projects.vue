@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import { projects } from '@/mocks/projects';
+import Container from '@/components/Container.vue';
 
 const projects_list = ref(projects);
 
@@ -21,57 +22,51 @@ const getIconStack = (title: string) => {
 </script>
 
 <template>
-  <div class="container">
-    <v-card-title class="title">Principais Projetos</v-card-title>
+  <Container title="Projetos">
+    <v-card v-for="project in projects_list" :key="project.id" class="mx-auto custom_card">
+      <v-carousel hide-delimiters height="200" width="322">
 
-    <div class="content">
+        <template v-slot:prev="{ props }">
+          <v-btn color="secondary" icon="mdi-menu-left" variant="plain" @click="props.onClick"></v-btn>
+        </template>
+        <template v-slot:next="{ props }">
+          <v-btn color="secondary" icon="mdi-menu-right" variant="plain" @click="props.onClick"></v-btn>
+        </template>
 
-      <v-card v-for="project in projects_list" :key="project.id" class="mx-auto custom_card">
-        <v-carousel hide-delimiters height="200" width="322">
+        <v-carousel-item v-for="(image, index) in project.images" :key="index" height="200" width="322">
+          <v-img :src="image" class="carousel-image" />
+        </v-carousel-item>
+      </v-carousel>
 
-          <template v-slot:prev="{ props }">
-            <v-btn color="secondary" icon="mdi-menu-left" variant="plain" @click="props.onClick"></v-btn>
-          </template>
-          <template v-slot:next="{ props }">
-            <v-btn color="secondary" icon="mdi-menu-right" variant="plain" @click="props.onClick"></v-btn>
-          </template>
+      <v-card-title>{{ project.title }}</v-card-title>
 
-          <v-carousel-item v-for="(image, index) in project.images" :key="index" height="200" width="322">
-            <v-img :src="image" class="carousel-image" />
-          </v-carousel-item>
-        </v-carousel>
+      <div class="stacks">
+        <div v-for="(stack, index) in project.stacks" :key="index">
+          <v-chip :color="getIconStack(stack)?.color" :prepend-icon="getIconStack(stack)?.value">{{ stack !== 'C#' ?
+            stack : '' }}</v-chip>
+        </div v-for="(stack, index) in project.stacks" :key="index">
+      </div>
 
-        <v-card-title>{{ project.title }}</v-card-title>
+      <v-card-actions>
+        <v-btn :href="project.repo" text="Repositório"></v-btn>
 
-        <div class="stacks">
-          <div v-for="(stack, index) in project.stacks" :key="index">
-            <v-chip :color="getIconStack(stack)?.color" :prepend-icon="getIconStack(stack)?.value">{{ stack !== 'C#' ?
-              stack : '' }}</v-chip>
-          </div v-for="(stack, index) in project.stacks" :key="index">
+        <v-spacer></v-spacer>
+
+        <v-btn color="secondary_blue" :icon="project.isShow ? 'mdi-chevron-up' : 'mdi-chevron-down'"
+          @click="project.isShow = !project.isShow"></v-btn>
+
+      </v-card-actions>
+
+      <v-expand-transition>
+        <div v-show="project.isShow">
+          <v-divider></v-divider>
+          <v-card-text class="custom_card_text">
+            <p>{{ project.description }}</p>
+          </v-card-text>
         </div>
-
-        <v-card-actions>
-          <v-btn :href="project.repo" text="Repositório"></v-btn>
-
-          <v-spacer></v-spacer>
-
-          <v-btn color="secondary_blue" :icon="project.isShow ? 'mdi-chevron-up' : 'mdi-chevron-down'"
-            @click="project.isShow = !project.isShow"></v-btn>
-
-        </v-card-actions>
-
-        <v-expand-transition>
-          <div v-show="project.isShow">
-            <v-divider></v-divider>
-            <v-card-text class="custom_card_text">
-              <p>{{ project.description }}</p>
-            </v-card-text>
-          </div>
-        </v-expand-transition>
-      </v-card>
-
-    </div>
-  </div>
+      </v-expand-transition>
+    </v-card>
+  </Container>
 </template>
 
 <style scoped>
