@@ -13,7 +13,29 @@ import codescratch_desktop_class from '@/assets/images/projects/codescratch/code
 import codescratch_mobile_home from '@/assets/images/projects/codescratch/codescratch_mobile_home.png';
 import codescratch_mobile_class from '@/assets/images/projects/codescratch/codescratch_mobile_home.png';
 
+import sngpc_desktop from '@/assets/images/projects/sngpc/sngpc.png';
+
+import cronoanalise_desktop from '@/assets/images/projects/cronoanalise/cronoanalise.png';
+
 export let projects = [
+    {
+        id: 6,
+        title: 'Cronoanálise',
+        description: 'Sistame de fábrica para coleta e gerenciamento de amostras temporais quanto ao fluxo de processo em uma esteira de fabricação, destinada a monitorar e gerenciar cronoanálies referente a amostras',
+        repo: '#',
+        stacks: ['Typescript', 'React.js'],
+        images: [cronoanalise_desktop],
+        isShow: false,
+    },
+    {
+        id: 5,
+        title: 'SNGPC',
+        description: 'Sistema Nacional de Gerenciamento de Produtos Controlados da rede de farmácias Bemol (Bemol Farma), com intuito de informatizar e monitorar a movimentação de medicamentos sujeitos a controle especial no Brasil',
+        repo: '#',
+        stacks: ['Typescript', 'Vue.js'],
+        images: [sngpc_desktop],
+        isShow: false,
+    },
     {
         id: 4,
         title: 'CodeScratch',
