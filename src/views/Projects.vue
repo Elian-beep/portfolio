@@ -89,6 +89,7 @@ const getIconStack = (title: string) => {
 .custom_card {
   min-width: 322px;
   max-width: 322px;
+  min-height: 384px;
 }
 
 .stacks {
@@ -97,6 +98,7 @@ const getIconStack = (title: string) => {
   gap: 4px;
   flex-wrap: wrap;
   padding: 0 12px;
+  min-height: 68px;
 }
 
 .stacks div {

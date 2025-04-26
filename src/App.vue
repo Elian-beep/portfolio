@@ -10,10 +10,9 @@ applicationStore.setIsDark(Boolean(localIsDark));
 </script>
 
 <template>
-  <v-app :theme="applicationStore.getIsDark ? 't_dark' : 't_light'">
+  <v-app :theme="applicationStore.getIsDark ? 't_light' : 't_dark'">
     <MenuNavigation>
       <RouterView />
     </MenuNavigation>
-    
   </v-app>
 </template>
